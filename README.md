@@ -1,0 +1,2 @@
+hippo-cms-angular-core
+======================
