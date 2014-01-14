@@ -1,0 +1,34 @@
+@ngdoc overview
+@name Environment setup
+@description
+
+# Environment setup
+
+This page describes which dependencies are required to start developing the Hippo application.
+
+## Prerequisites
+
+* [Node Package Manager](https://npmjs.org/) (NPM)
+* [Git](http://git-scm.com/)
+* [Subversion](http://subversion.apache.org/)
+
+## Dependencies
+
+* [Grunt](http://gruntjs.com/) (build tool)
+* [Bower](http://bower.io/) (package management)
+
+## Environment setup
+### Global NPM packages
+We need to globally install grunt-cli and bower first.
+
+    $ npm install -g grunt-cli bower
+
+### Install the project dependencies
+Next, run the command below in the project root directory.
+
+    $ npm install && bower install
+
+### Confirm installation
+You can check if the installation has succeeded, by running the tests using the following command.
+
+    $ grunt test:unit

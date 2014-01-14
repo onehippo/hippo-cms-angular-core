@@ -1,0 +1,21 @@
+{
+    "NAVIGATION": {
+        "VISITOR_ANALYSIS": "Visitor Analysis",
+        "CHARACTERISTICS": "Characteristics",
+        "PERSONAS": "Personas"
+    },
+
+    "USER_NAVIGATION": {
+        "PROFILE": "Profile",
+        "SETTINGS": "Settings",
+        "LOGOUT": "Logout"
+    },
+
+    "GLOBAL_NAVIGATION": {
+        "HOME": "Home",
+        "TOGGLE_NAVIGATION": "Toggle navigation",
+        "CHANNEL_MANAGER": "Channel Manager",
+        "EXPERIENCE_OPTIMIZER": "Experience Optimizer",
+        "DOCUMENTS": "Documents"
+    }
+}

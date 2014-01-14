@@ -1,0 +1,16 @@
+@ngdoc overview
+@name Useful commands
+@description
+
+# Useful commands
+
+## Generate build
+To build the application, run `$ grunt build` inside the project directory. You can find the output in the `target/cms/app` directory.
+
+## Run unit tests
+Every component should contain a `*.spec.js` file containing tests for the module. Execute `$ grunt test:unit` to run the tests.
+
+## Create server
+You can preview the application using `$ grunt server:watch`. If you want the browser to automatically refresh after file changes, use the `$ grunt server:watch` command.
+
+Use the `--mock` flag if you want to use mock data. Use `--mock-empty` if you want to use a mocked API that returns empty results.

@@ -1,0 +1,13 @@
+@ngdoc overview
+@name Instructions
+@description
+
+# AngularJS XO Demo
+
+## Introduction
+The introduction section describes how to setup the developer environment together with an explanation of the commands you can use.
+
+## Sections
+1. {@link 1-environment-setup Environment setup}
+2. {@link 2-commands Useful commands}
+3. {@link 3-module-development Module development}

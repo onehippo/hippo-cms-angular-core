@@ -1,0 +1,24 @@
+@ngdoc overview
+@name Module development
+@description
+
+# Module Development
+This page contains information on how to develop you own modules for the Hippo CMS.
+
+## Developing modules
+### Add a module for development
+If you want to develop a module for the application, you need to first create a GitHub repository for it. A repository with the URL `https://github.com/MyUsername/hippo-module.git` can be added to you project using the command `$ grunt addModule:MyUsername/hippo-module`.
+
+The contents of the GitHub repository will be cloned to `cms/js/src/components/hippo-module/`.
+
+### Publish a module
+When a module is finished, make sure that you include compiled versions of `.less`, `.coffee`, etc. files in your repository.
+
+Remove the module folder from your components directory and install it using Bower. Eg. `$ bower install https://github.com/MyUsername/hippo-module.git --save`.
+
+### Tagging
+Update the version in the `bower.json` file, according to the rules of [Semantic Versioning]('http://semver.org/').
+
+## Reference documents
+
+* [REST API documentation](http://www.onehippo.org/7_8/library/enterprise/enterprise-features/targeting-reference-7.8/collectors.html)

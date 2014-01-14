@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default" role="navigation" ng-controller="GlobalNavigationCtrl">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#perspective-tabs-collapse">
+            <span class="sr-only">{{ 'GLOBAL_NAVIGATION.TOGGLE_NAVIGATION' | translate }}</span>
+            <span class="fa fa-bars"></span>
+        </button>
+
+        <!-- somehow, using ui-sref="{}" -->
+        <a class="navbar-brand hidden-xs" href="{{state.href(home)}}"><img src="app/assets/images/hippo.png"></a>
+
+        <!-- TODO: make a directive of the collapsable navigation, so we can control its state -->
+        <button type="button" class="navbar-toggle back pull-left"
+                ng-click="goBack()"
+                ng-hide="state.is(home)">
+            <span class="fa fa-chevron-left"></span>
+        </button>
+
+        <h4 class="visible-xs">{{ pageTitle.value | translate | truncate:16 }}</h4>
+    </div>
+
+    <!-- Content to toggle -->
+    <div class="collapse navbar-collapse" id="perspective-tabs-collapse">
+        <ul class="nav-pills nav-stacked">
+            <li ng-repeat="perspective in perspectives" ng-class="{active: state.includes(perspective.state)}">
+                <a ui-sref="{{perspective.state}}"><i class="fa icon-large {{perspective.icon}}"></i><span>{{perspective.title | translate}}</span></a>
+            </li>
+        </ul>
+        <ul class="nav-pills nav-stacked visible-xs">
+            <li class="divider"></li>
+            <li ng-repeat="item in userNavigationItems" divider="$last">
+                <a ui-sref="{{ item.state }}"><i class="fa fa-{{ item.icon }} icon-large"></i> <span>{{ item.label | translate }}</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>

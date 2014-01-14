@@ -1,0 +1,19 @@
+<div class="l-table-cell clearfix">
+    <!-- Breadcrumbs -->
+    <div breadcrumb items="breadcrumbs" class="pull-left"></div>
+    <!-- / Breadcrumbs -->
+
+    <!-- User links -->
+    <div class="btn-group pull-right user-links">
+        <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-user"></i> Admin <b class="caret"></b>
+        </button>
+
+        <ul class="dropdown-menu" role="menu" ng-controller="TopBarCtrl">
+            <li ng-repeat="tab in tabs" divider="$last">
+                <a ui-sref="{{ tab.state }}" href><i class="fa fa-{{ tab.icon }}"></i> {{ tab.label | translate }}</a>
+            </li>
+        </ul>
+    </div>
+    <!-- / User links -->
+</div>

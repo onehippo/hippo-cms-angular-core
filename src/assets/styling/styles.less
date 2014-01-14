@@ -1,0 +1,22 @@
+// Source Directories
+@modulesPath: '../../modules';
+@vendorsPath: "../../../components";
+@bootstrapPath: "@{vendorsPath}/bootstrap";
+@bootstrapLessPath: "@{bootstrapPath}/less";
+@hippoThemePath: "@{vendorsPath}/hippo-theme";
+@hippoLessPath: "@{hippoThemePath}/src/less";
+
+// Core variables and mixins
+@import "@{bootstrapLessPath}/variables.less";
+@import "@{hippoLessPath}/_variables.less";
+
+@import "@{bootstrapLessPath}/mixins.less";
+@import "@{hippoLessPath}/_mixins.less";
+
+// CMS specific styling
+@import "_utilities";
+@import "_general";
+
+@import "@{modulesPath}/breadcrumbs/_breadcrumbs";
+@import "@{modulesPath}/global-navigation/_global-navigation";
+@import "@{modulesPath}/top-bar/_top-bar";

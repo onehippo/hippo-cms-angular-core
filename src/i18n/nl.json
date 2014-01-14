@@ -1,0 +1,21 @@
+{
+    "NAVIGATION": {
+        "VISITOR_ANALYSIS": "Bezoeker Inzichten",
+        "CHARACTERISTICS": "Karakteristieken",
+        "PERSONAS": "Personas"
+    },
+
+    "USER_NAVIGATION": {
+        "PROFILE": "Profiel",
+        "SETTINGS": "Instellingen",
+        "LOGOUT": "Uitloggen"
+    },
+
+    "GLOBAL_NAVIGATION": {
+        "HOME": "Hoofdpagina",
+        "TOGGLE_NAVIGATION": "Navigatie aan / uit",
+        "CHANNEL_MANAGER": "Channel Manager",
+        "EXPERIENCE_OPTIMIZER": "Experience Optimizer",
+        "DOCUMENTS": "Documenten"
+    }
+}

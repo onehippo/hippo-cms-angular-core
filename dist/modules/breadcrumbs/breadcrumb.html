@@ -1,0 +1,7 @@
+<ol class="breadcrumb">
+    <li><a ui-sref="visitor-analysis"><i class="fa fa-arrow-circle-left"></i> Experience Optimizer</a></li>
+    <li ng-repeat="item in items" ng-class="{active: $last}">
+        <a ng-hide="$last" href="#{{ item.path }}">{{ item.name }}</a>
+        <span ng-show="$last">{{ item.name }}</span>
+    </li>
+</ol>

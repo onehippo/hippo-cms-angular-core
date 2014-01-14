@@ -1,0 +1,75 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 9]>
+<html class="no-js lt-ie10" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 10]>
+<html class="no-js lt-ie11" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if gt IE 10]><!-->
+<html class="no-js" xmlns:ng="http://angularjs.org"> <!--<![endif]-->
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8"/>
+    <title>Experience Optimizer - Hippo CMS</title>
+    <meta name="description" content="AngularJS skeleton"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Force IE to NOT run in compatibility mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="components/hippo-theme/dist/css/main.min.css"/>
+    <link rel="stylesheet" href="components/hippo-cms-angular-core/dist/css/hippo-cms.css"/>
+
+    <!-- IE Detector -->
+    <script src="components/js-detect-ie/detect-ie.js"></script>
+
+    <!-- touch devices -->
+    <script src="components/fastclick/lib/fastclick.js"></script>
+
+</head>
+<body>
+<div id="container" class="container-full">
+    <div class="row">
+        <div viewport-test></div>
+
+        <!-- Global Navigation -->
+        <div id="perspective-tabs" class="col-sm-2 col-md-2">
+            <div global-navigation></div>
+        </div>
+        <!-- / Global Navigation -->
+
+        <!-- Main Section -->
+        <div id="main" class="col-sm-10 col-md-10" ui-view></div>
+        <!-- / Main Section -->
+    </div>
+</div>
+
+<script src="components/jquery/jquery.js"></script>
+<script src="components/angular/angular.js"></script>
+
+<script src="components/hippo-plugins/dist/js/loader.min.js" data-modules="modules.json"></script>
+
+<script type="text/javascript">
+    $(function () {
+
+        // eliminate 300ms delay on mobile browsers
+        FastClick.attach(document.body);
+
+        // LiveReload
+        if (!IE.isTheBrowser) {
+            var http = location.protocol;
+            var slashes = http.concat("//");
+            var host = slashes.concat(window.location.hostname);
+            $.getScript(host + ":35729/livereload.js?snipver=1");
+        }
+    });
+</script>
+
+</body>
+</html>
