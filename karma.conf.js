@@ -6,15 +6,10 @@ module.exports = function (config) {
     var hippo = require( './build.config.js' );
 
     config.set({
-        basePath: hippo.source,
         frameworks: ['jasmine'],
 
         // files to load in the browser
         files: [
-            // external sources
-            'http://maps.google.com/maps/api/js?sensor=true',
-            'http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0.2/src/markerclusterer_compiled.js',
-
             // components
             hippo.bowerComponents + '/jquery/jquery.js',
             hippo.bowerComponents + '/jasmine-jquery/lib/jasmine-jquery.js',
@@ -36,19 +31,17 @@ module.exports = function (config) {
 
             // hippo modules the app depends on
             hippo.bowerComponents + '/hippo-theme/dist/js/main.js',
-            hippo.bowerComponents + '/targeting-plugin/dist/js/main.js',
 
-            'app/hippo-cms.js',
-            'app/hippo-xodemo.js',
-            'app/modules/shared/**/*.js',
+            'src/hippo-cms.js',
+            'src/modules/**/*.js',
 
             // load template files for directives
-            'app/modules/**/*.html'
+            'src/modules/**/*.html'
         ],
 
         // generate js files from html templates to expose them during testing
         preprocessors: {
-            'app/modules/**/*.html': 'ng-html2js'
+            'src/modules/**/*.html': 'ng-html2js'
         },
 
         // https://github.com/karma-runner/karma-ng-html2js-preprocessor#configuration

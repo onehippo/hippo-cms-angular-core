@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module('hippo.cms',
-            ['ngCookies', 'ui.router', 'ui.bootstrap', 'hippo.app.mock', 'pascalprecht.translate', 'hippo.theme'])
+            ['ngCookies', 'ui.router', 'ui.bootstrap', 'pascalprecht.translate', 'hippo.theme'])
 
         /**
          * @ngdoc object
@@ -15,7 +15,7 @@
             function ($translateProvider, $translatePartialLoaderProvider) {
 
                 // i18n
-                $translatePartialLoaderProvider.addPart('app/modules');
+                $translatePartialLoaderProvider.addPart('components/hippo-cms-angular-core/dist');
                 $translateProvider.useMissingTranslationHandlerLog();
                 $translateProvider.useLoader('$translatePartialLoader', {
                     urlTemplate: '{part}/i18n/{lang}.json'
@@ -29,7 +29,7 @@
          * Global $rootScope events
          *  - doLayout trigger layout re-rendering
          */
-        .run(['$rootScope', '$translate', '$cookies', function ($rootScope, Mocks, $translate, $cookies) {
+        .run(['$rootScope', '$translate', '$cookies', function ($rootScope, $translate, $cookies) {
             // default language
             if ($cookies['angular-locale']) {
                 $translate.uses($cookies['angular-locale']);
