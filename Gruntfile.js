@@ -144,6 +144,19 @@ module.exports = function (grunt) {
             options: {
                 "jshintrc": true
             }
+        },
+
+        lintspaces: {
+            less: {
+                src: [
+                    'src/**/*.less'
+                ],
+                options: {
+                    indentation: 'spaces',
+                    spaces: 2,
+                    ignores: ['js-comments']
+                }
+            }
         }
     });
 
@@ -158,6 +171,7 @@ module.exports = function (grunt) {
             'concat:dist',
             'uglify:dist',
 //            'ngdocs',
+            'lintspaces:less',
             'less'
         ];
 
