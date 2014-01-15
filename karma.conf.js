@@ -25,8 +25,6 @@ module.exports = function (config) {
             hippo.bowerComponents + '/angular-ui-router/release/angular-ui-router.js',
             hippo.bowerComponents + '/angular-resource/angular-resource.js',
             hippo.bowerComponents + '/underscore/underscore.js',
-            hippo.bowerComponents + '/flot/jquery.flot.js',
-            hippo.bowerComponents + '/flot/jquery.flot.pie.js',
             hippo.bowerComponents + '/js-detect-ie/detect-ie.js',
 
             // hippo modules the app depends on
