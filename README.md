@@ -1,6 +1,8 @@
 Hippo CMS AngularJS core
 ========================
 
+[![Build Status](https://travis-ci.org/onehippo/hippo-cms-angular-core.png?branch=master)](https://travis-ci.org/onehippo/hippo-cms-angular-core)
+
 ## Development environment setup
 #### Prerequisites
 
