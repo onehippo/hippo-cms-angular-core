@@ -153,7 +153,7 @@ module.exports = function (grunt) {
                 ],
                 options: {
                     indentation: 'spaces',
-                    spaces: 2,
+                    spaces: 4,
                     ignores: ['js-comments']
                 }
             }
