@@ -10,7 +10,7 @@
      * @description
      * Perspectives extension point.
      */
-            .provider('Perspectives', [function () {
+            .provider('hippo.cms.Perspectives', [function () {
                 var perspectives = [
                     {
                         state: 'dashboard',
@@ -54,12 +54,6 @@
                 };
             }])
 
-            .run(['$state', 'Perspectives', function($state, Perspectives) {
-
-                // default state
-                $state.transitionTo(Perspectives.active());
-            }])
-
 
     /**
      * @ngdoc service
@@ -68,11 +62,11 @@
      * @description
      * Information for each item in the User navigation
      */
-            .provider('UserNavigationItems', [function () {
+            .provider('hippo.cms.UserNavigation', [function () {
 
                 var menuItems = [];
 
-                this.addItem = function(item) {
+                this.addItem = function (item) {
                     menuItems.push(item);
                 };
 
@@ -84,6 +78,23 @@
 
                     return userNavigationService;
                 };
+            }])
+
+    /**
+     * @ngdoc service
+     * @name hippo.app.service:PageTitle
+     *
+     * @description
+     * Keeps track of the current page title.
+     */
+            .service('hippo.cms.PageTitle', [function () {
+                return { value: '' };
+            }])
+
+            .run(['$state', 'hippo.cms.Perspectives', function ($state, Perspectives) {
+
+                // default state
+                $state.transitionTo(Perspectives.active());
             }]);
 
 })();

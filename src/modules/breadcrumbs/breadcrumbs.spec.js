@@ -9,7 +9,7 @@ describe('In the breadcrumbs module', function () {
                 {name: 'characteristics', path: '/characteristics'}
             ];
 
-            elm = angular.element('<div breadcrumb items="items"></div>');
+            elm = angular.element('<div hippo.cms.breadcrumb items="items"></div>');
             $compile(elm)(scope);
             scope.$digest();
         }));

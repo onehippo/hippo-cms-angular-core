@@ -15,11 +15,11 @@
      * @scope
      * @param {Array} source object containing the breadcrumb items to be displayed
      */
-            .directive('breadcrumb', ['URLBuilder', function (buildUrl) {
+            .directive('hippo.cms.breadcrumb', ['hippo.plugins.url', function (buildUrl) {
                 return {
                     restrict: 'A',
                     replace: true,
-                    templateUrl: buildUrl('hippo-cms-angular-core', 'modules/breadcrumbs/breadcrumb.html'),
+                    templateUrl: buildUrl('hippo-cms', 'modules/breadcrumbs/breadcrumb.html'),
                     scope: {
                         items: '='
                     }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation" ng-controller="GlobalNavigationCtrl">
+<nav class="navbar navbar-default" role="navigation" ng-controller="_hippo.cms.GlobalNavigationCtrl">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#perspective-tabs-collapse">
             <span class="sr-only">{{ 'GLOBAL_NAVIGATION.TOGGLE_NAVIGATION' | translate }}</span>
@@ -6,7 +6,7 @@
         </button>
 
         <!-- somehow, using ui-sref="{}" -->
-        <a class="navbar-brand hidden-xs" href="{{state.href(home)}}"><img src="components/hippo-cms-angular-core/dist/assets/images/hippo.png"></a>
+        <a class="navbar-brand hidden-xs" href="{{state.href(home)}}"><img src="{{ 'assets/images/hippo.png' | hippo.plugins.asset:'hippo-cms' }}"></a>
 
         <!-- TODO: make a directive of the collapsable navigation, so we can control its state -->
         <button type="button" class="navbar-toggle back pull-left"
@@ -15,7 +15,7 @@
             <span class="fa fa-chevron-left"></span>
         </button>
 
-        <h4 class="visible-xs">{{ pageTitle.value | translate | truncate:16 }}</h4>
+        <h4 class="visible-xs">{{ pageTitle.value | translate | hippo.cms.truncate:16 }}</h4>
     </div>
 
     <!-- Content to toggle -->

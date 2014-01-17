@@ -15,7 +15,7 @@
             function ($translateProvider, $translatePartialLoaderProvider) {
 
                 // i18n
-                $translatePartialLoaderProvider.addPart('components/hippo-cms-angular-core/dist');
+                $translatePartialLoaderProvider.addPart('components/hippo-cms/dist');
                 $translateProvider.useMissingTranslationHandlerLog();
                 $translateProvider.useLoader('$translatePartialLoader', {
                     urlTemplate: '{part}/i18n/{lang}.json'
@@ -91,7 +91,7 @@
      * @description
      * Perspectives extension point.
      */
-            .provider('Perspectives', [function () {
+            .provider('hippo.cms.Perspectives', [function () {
                 var perspectives = [
                     {
                         state: 'dashboard',
@@ -135,12 +135,6 @@
                 };
             }])
 
-            .run(['$state', 'Perspectives', function($state, Perspectives) {
-
-                // default state
-                $state.transitionTo(Perspectives.active());
-            }])
-
 
     /**
      * @ngdoc service
@@ -149,11 +143,11 @@
      * @description
      * Information for each item in the User navigation
      */
-            .provider('UserNavigationItems', [function () {
+            .provider('hippo.cms.UserNavigation', [function () {
 
                 var menuItems = [];
 
-                this.addItem = function(item) {
+                this.addItem = function (item) {
                     menuItems.push(item);
                 };
 
@@ -165,6 +159,23 @@
 
                     return userNavigationService;
                 };
+            }])
+
+    /**
+     * @ngdoc service
+     * @name hippo.app.service:PageTitle
+     *
+     * @description
+     * Keeps track of the current page title.
+     */
+            .service('hippo.cms.PageTitle', [function () {
+                return { value: '' };
+            }])
+
+            .run(['$state', 'hippo.cms.Perspectives', function ($state, Perspectives) {
+
+                // default state
+                $state.transitionTo(Perspectives.active());
             }]);
 
 })();
@@ -185,11 +196,11 @@
      * @scope
      * @param {Array} source object containing the breadcrumb items to be displayed
      */
-            .directive('breadcrumb', ['URLBuilder', function (buildUrl) {
+            .directive('hippo.cms.breadcrumb', ['hippo.plugins.url', function (buildUrl) {
                 return {
                     restrict: 'A',
                     replace: true,
-                    templateUrl: buildUrl('hippo-cms-angular-core', 'modules/breadcrumbs/breadcrumb.html'),
+                    templateUrl: buildUrl('hippo-cms', 'modules/breadcrumbs/breadcrumb.html'),
                     scope: {
                         items: '='
                     }
@@ -208,37 +219,39 @@
      * @description
      * Loads the translation files
      */
-            .controller('GlobalNavigationCtrl', ['$scope', '$rootScope', 'URLParser', '$state', 'PageTitle', 'UserNavigationItems', 'Perspectives',
-                function ($scope, $rootScope, URLParts, $state, PageTitle, UserNavigationItems, Perspectives) {
-                    // keep track of the state
-                    $scope.state = $state;
-                    $scope.pageTitle = PageTitle;
-                    $scope.navigation = {
-                        parentState: 'visitor-analysis',
-                        currentState: $state.current
-                    };
-                    $scope.userNavigationItems = UserNavigationItems.getAll();
-                    $scope.perspectives = Perspectives.list();
-                    $scope.home = Perspectives.active();
+            .controller('_hippo.cms.GlobalNavigationCtrl',
+                    ['$scope', '$rootScope', 'hippo.theme.URLParser', '$state', 'hippo.cms.PageTitle', 'hippo.cms.UserNavigation', 'hippo.cms.Perspectives',
+                        function ($scope, $rootScope, URLParser, $state, PageTitle, UserNavigation, Perspectives) {
+                            // keep track of the state
+                            $scope.state = $state;
+                            $scope.pageTitle = PageTitle;
+                            $scope.navigation = {
+                                parentState: Perspectives.active(),
+                                currentState: $state.current
+                            };
+                            $scope.userNavigationItems = UserNavigation.getAll();
+                            $scope.perspectives = Perspectives.list();
+                            $scope.home = Perspectives.active();
+                            $scope.plugin = 'hippo-cms';
 
-                    $rootScope.$on('$stateChangeSuccess', function () {
-                        $scope.navigation.parentState = URLParts.getParent();
-                    });
+                            $rootScope.$on('$stateChangeSuccess', function () {
+                                $scope.navigation.parentState = URLParser.getParent();
+                            });
 
-                    // get state url
-                    $scope.getStateUrl = function (state) {
-                        return $state.href(state);
-                    };
+                            // get state url
+                            $scope.getStateUrl = function (state) {
+                                return $state.href(state);
+                            };
 
-                    // to the parent state
-                    $scope.goBack = function () {
-                        if ($scope.navigation.parentState == null) {
-                            $state.go('visitor-analysis');
-                        } else {
-                            $state.go($scope.navigation.parentState.name);
-                        }
-                    };
-                }])
+                            // to the parent state
+                            $scope.goBack = function () {
+                                if ($scope.navigation.parentState == null) {
+                                    $state.go($scope.home);
+                                } else {
+                                    $state.go($scope.navigation.parentState.name);
+                                }
+                            };
+                        }])
 
     /**
      * @ngdoc directive
@@ -248,11 +261,11 @@
      * @description
      * Displays the Global Navigation
      */
-            .directive('globalNavigation',  ['URLBuilder', function (buildUrl) {
+            .directive('hippo.cms.globalNavigation', ['hippo.plugins.url', function (buildUrl) {
                 return {
                     restrict: 'A',
                     replace: true,
-                    templateUrl: buildUrl('hippo-cms-angular-core', 'modules/global-navigation/global-navigation.html')
+                    templateUrl: buildUrl('hippo-cms', 'modules/global-navigation/global-navigation.html')
                 };
             }])
 
@@ -266,7 +279,7 @@
      *
      * @returns {String} The truncated version of the original string
      */
-            .filter('truncate', function () {
+            .filter('hippo.cms.truncate', function () {
                 return function (text, length, end) {
                     if (isNaN(length)) {
                         length = 10;
@@ -299,8 +312,8 @@
          * @description
          * Loads the translation files
          */
-        .controller('TopBarCtrl', ['$scope', 'UserNavigationItems', function ($scope, UserNavigationItems) {
-            $scope.tabs = UserNavigationItems.getAll();
+        .controller('hippo.cms.TopBarCtrl', ['$scope', 'hippo.cms.UserNavigation', function ($scope, UserNavigation) {
+            $scope.tabs = UserNavigation.getAll();
             $scope.activeTabUrl = '';
         }])
 
@@ -312,11 +325,11 @@
          * @description
          * Displays the Top Bar
          */
-        .directive('topBar', ['URLBuilder', function (buildUrl) {
+        .directive('hippo.cms.topBar', ['hippo.plugins.url', function (buildUrl) {
             return {
                 restrict: 'A',
                 replace: true,
-                templateUrl: buildUrl('hippo-cms-angular-core', 'modules/top-bar/top-bar.html')
+                templateUrl: buildUrl('hippo-cms', 'modules/top-bar/top-bar.html')
             };
         }]);
 }());

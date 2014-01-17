@@ -178,6 +178,14 @@ module.exports = function (grunt) {
         grunt.task.run(tasks);
     });
 
+    // server
+    grunt.registerTask('server', function (target) {
+
+        if (target === 'docs') {
+            return grunt.task.run(['clean:docs', 'ngdocs', 'copy:docs', 'connect:docs:keepalive' ]);
+        }
+    });
+
     // test
     grunt.registerTask('test:unit', [
         'karma:single'

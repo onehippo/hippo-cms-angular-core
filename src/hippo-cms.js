@@ -15,7 +15,7 @@
             function ($translateProvider, $translatePartialLoaderProvider) {
 
                 // i18n
-                $translatePartialLoaderProvider.addPart('components/hippo-cms-angular-core/dist');
+                $translatePartialLoaderProvider.addPart('components/hippo-cms/dist');
                 $translateProvider.useMissingTranslationHandlerLog();
                 $translateProvider.useLoader('$translatePartialLoader', {
                     urlTemplate: '{part}/i18n/{lang}.json'

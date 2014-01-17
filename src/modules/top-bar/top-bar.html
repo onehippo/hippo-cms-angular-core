@@ -9,7 +9,7 @@
             <i class="fa fa-user"></i> Admin <b class="caret"></b>
         </button>
 
-        <ul class="dropdown-menu" role="menu" ng-controller="TopBarCtrl">
+        <ul class="dropdown-menu" role="menu" ng-controller="hippo.cms.TopBarCtrl">
             <li ng-repeat="tab in tabs" divider="$last">
                 <a ui-sref="{{ tab.state }}" href><i class="fa fa-{{ tab.icon }}"></i> {{ tab.label | translate }}</a>
             </li>

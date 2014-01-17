@@ -10,37 +10,39 @@
      * @description
      * Loads the translation files
      */
-            .controller('GlobalNavigationCtrl', ['$scope', '$rootScope', 'URLParser', '$state', 'PageTitle', 'UserNavigationItems', 'Perspectives',
-                function ($scope, $rootScope, URLParts, $state, PageTitle, UserNavigationItems, Perspectives) {
-                    // keep track of the state
-                    $scope.state = $state;
-                    $scope.pageTitle = PageTitle;
-                    $scope.navigation = {
-                        parentState: 'visitor-analysis',
-                        currentState: $state.current
-                    };
-                    $scope.userNavigationItems = UserNavigationItems.getAll();
-                    $scope.perspectives = Perspectives.list();
-                    $scope.home = Perspectives.active();
+            .controller('_hippo.cms.GlobalNavigationCtrl',
+                    ['$scope', '$rootScope', 'hippo.theme.URLParser', '$state', 'hippo.cms.PageTitle', 'hippo.cms.UserNavigation', 'hippo.cms.Perspectives',
+                        function ($scope, $rootScope, URLParser, $state, PageTitle, UserNavigation, Perspectives) {
+                            // keep track of the state
+                            $scope.state = $state;
+                            $scope.pageTitle = PageTitle;
+                            $scope.navigation = {
+                                parentState: Perspectives.active(),
+                                currentState: $state.current
+                            };
+                            $scope.userNavigationItems = UserNavigation.getAll();
+                            $scope.perspectives = Perspectives.list();
+                            $scope.home = Perspectives.active();
+                            $scope.plugin = 'hippo-cms';
 
-                    $rootScope.$on('$stateChangeSuccess', function () {
-                        $scope.navigation.parentState = URLParts.getParent();
-                    });
+                            $rootScope.$on('$stateChangeSuccess', function () {
+                                $scope.navigation.parentState = URLParser.getParent();
+                            });
 
-                    // get state url
-                    $scope.getStateUrl = function (state) {
-                        return $state.href(state);
-                    };
+                            // get state url
+                            $scope.getStateUrl = function (state) {
+                                return $state.href(state);
+                            };
 
-                    // to the parent state
-                    $scope.goBack = function () {
-                        if ($scope.navigation.parentState == null) {
-                            $state.go('visitor-analysis');
-                        } else {
-                            $state.go($scope.navigation.parentState.name);
-                        }
-                    };
-                }])
+                            // to the parent state
+                            $scope.goBack = function () {
+                                if ($scope.navigation.parentState == null) {
+                                    $state.go($scope.home);
+                                } else {
+                                    $state.go($scope.navigation.parentState.name);
+                                }
+                            };
+                        }])
 
     /**
      * @ngdoc directive
@@ -50,11 +52,11 @@
      * @description
      * Displays the Global Navigation
      */
-            .directive('globalNavigation',  ['URLBuilder', function (buildUrl) {
+            .directive('hippo.cms.globalNavigation', ['hippo.plugins.url', function (buildUrl) {
                 return {
                     restrict: 'A',
                     replace: true,
-                    templateUrl: buildUrl('hippo-cms-angular-core', 'modules/global-navigation/global-navigation.html')
+                    templateUrl: buildUrl('hippo-cms', 'modules/global-navigation/global-navigation.html')
                 };
             }])
 
@@ -68,7 +70,7 @@
      *
      * @returns {String} The truncated version of the original string
      */
-            .filter('truncate', function () {
+            .filter('hippo.cms.truncate', function () {
                 return function (text, length, end) {
                     if (isNaN(length)) {
                         length = 10;
