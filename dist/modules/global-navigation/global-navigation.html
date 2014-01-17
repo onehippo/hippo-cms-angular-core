@@ -6,7 +6,7 @@
         </button>
 
         <!-- somehow, using ui-sref="{}" -->
-        <a class="navbar-brand hidden-xs" href="{{state.href(home)}}"><img src="{{ 'assets/images/hippo.png' | hippo.plugins.asset }}"></a>
+        <a class="navbar-brand hidden-xs" href="{{state.href(home)}}"><img src="{{ 'assets/images/hippo.png' | hippo.plugins.asset:'hippo-cms' }}"></a>
 
         <!-- TODO: make a directive of the collapsable navigation, so we can control its state -->
         <button type="button" class="navbar-toggle back pull-left"

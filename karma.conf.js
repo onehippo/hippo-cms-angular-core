@@ -28,9 +28,12 @@ module.exports = function (config) {
             hippo.bowerComponents + '/js-detect-ie/detect-ie.js',
 
             // hippo modules the app depends on
+            hippo.bowerComponents + '/hippo-plugins/dist/js/main.js',
             hippo.bowerComponents + '/hippo-theme/dist/js/main.js',
 
             'src/hippo-cms.js',
+            'src/test.js',
+
             'src/modules/**/*.js',
 
             // load template files for directives

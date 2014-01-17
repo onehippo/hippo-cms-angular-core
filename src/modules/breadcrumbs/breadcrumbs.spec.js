@@ -1,4 +1,11 @@
 describe('In the breadcrumbs module', function () {
+
+    beforeEach(function () {
+        module('hippo.cms');
+
+        module('src/modules/breadcrumbs/breadcrumb.html')
+    });
+
     describe('the directive breadcrumbs', function () {
         var elm, scope;
 
@@ -15,7 +22,7 @@ describe('In the breadcrumbs module', function () {
         }));
 
         it('should be available', function () {
-            expect(elm).toBe('div[breadcrumb]');
+            expect(elm.hasClass('breadcrumb')).toBeTruthy();
         });
     });
 });

@@ -72,7 +72,8 @@ module.exports = function (grunt) {
                     'src/hippo-cms.js',
                     'src/hippo-cms-api.js',
                     'src/**/*.js',
-                    '!**/*.spec.js'
+                    '!**/*.spec.js',
+                    '!src/test.js'
                 ],
                 dest: 'dist/hippo-cms.js'
             }
@@ -167,6 +168,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', function (target) {
         var tasks = [
             'jshint',
+            'karma:single',
             'copy:resources',
             'concat:dist',
             'uglify:dist',

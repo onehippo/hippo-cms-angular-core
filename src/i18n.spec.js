@@ -9,4 +9,5 @@ beforeEach(function() {
         $translateProvider.translations(DEFAULT_LANG, DEFAULT_TRANSLATIONS);
         $translateProvider.preferredLanguage(DEFAULT_LANG);
     });
+
 });
