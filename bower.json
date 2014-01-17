@@ -31,8 +31,8 @@
     "fastclick": "~0.6.10",
     "chosen": "https://github.com/onehippo/chosen.git#96249101dc2c0f15e8e6223ad18bbebbd30290fd",
     "bootstrap-chosen": "https://github.com/alxlit/bootstrap-chosen.git",
-    "hippo-theme": "http://github.com/onehippo/hippo-theme.git#v1.0.0",
-    "hippo-plugins": "http://github.com/onehippo/hippo-plugins.git#d8fbacc6926b99c69e08a556b3cedf15e6173960"
+    "hippo-theme": "http://github.com/onehippo/hippo-theme.git#c8e175df90e84fd6adfdb19359052a065d4a5624",
+    "hippo-plugins": "http://github.com/onehippo/hippo-plugins.git#424d4759b04c0b5c6b1945a3fd1f0b59e93ba068"
   },
   "devDependencies": {},
   "resolutions": {
